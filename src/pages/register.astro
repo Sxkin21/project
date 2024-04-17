@@ -1,3 +1,21 @@
+---
+import { db, Users } from 'astro:db';
+
+if (Astro.request.method === 'POST') {
+  // parse form data
+  const formData = await Astro.request.formData();
+  const emailForm = formData.get('email');
+  const passwordForm = formData.get('password');
+
+
+  const findDetails = await db.select().from(Users)
+
+  if (emailForm===findDetails.email && passwordForm==findDetails.password) {
+    // insert form data into the Comment table
+    console.log("success login")
+  }
+}
+---
 
 <!DOCTYPE html>
 <html lang="en">
