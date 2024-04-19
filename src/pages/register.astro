@@ -10,7 +10,7 @@ if (Astro.request.method === 'POST') {
 
   const findDetails = await db.select().from(Users)
 
-  if (emailForm===findDetails.Email && passwordForm==findDetails.Password) {
+  if (emailForm===findDetails.email && passwordForm==findDetails.password) {
     // insert form data into the Comment table
     console.log("success login")
   }

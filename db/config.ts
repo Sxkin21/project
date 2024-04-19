@@ -1,10 +1,10 @@
 import { defineDb, defineTable, column } from 'astro:db';
 
 
-const Users = defineTable({
+const Users= defineTable({
   columns: {
-    Email: column.text(),
-    Password: column.text()
+    email: column.text(),
+    password: column.text()
   }
 })
 
