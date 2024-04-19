@@ -10,7 +10,7 @@ if (Astro.request.method === 'POST') {
 
   const findDetails = await db.select().from(Users)
 
-  if (emailForm===findDetails.email && passwordForm==findDetails.password) {
+  if (emailForm===findDetails.Email && passwordForm==findDetails.Password) {
     // insert form data into the Comment table
     console.log("success login")
   }
@@ -24,7 +24,7 @@ if (Astro.request.method === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/src/pages/output.css">
+    <link rel="stylesheet" href="/src/output.css">
 
 
 </head>
