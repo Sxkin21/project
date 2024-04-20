@@ -1,9 +1,8 @@
 ---
-<<<<<<< HEAD
+
 import { db, users, isNotNull} from 'astro:db';
-=======
-import { db, Users } from 'astro:db';
->>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
+
+
 
 if (Astro.request.method === 'POST') {
   // parse form data
@@ -12,7 +11,6 @@ if (Astro.request.method === 'POST') {
   const passwordForm = formData.get('password');
 
 
-<<<<<<< HEAD
 const emailData= await db.select(emailForm).from(users).where(isNotNull(users.email))
 
 
@@ -24,28 +22,13 @@ const emailData= await db.select(emailForm).from(users).where(isNotNull(users.em
 ---
 
 
-=======
-  const findDetails = await db.select().from(Users)
-
-  if (emailForm===findDetails.email && passwordForm==findDetails.password) {
-    // insert form data into the Comment table
-    console.log("success login")
-  }
-}
----
-
->>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="/src/output.css">
-=======
-    <link rel="stylesheet" href="/src/pages/output.css">
->>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
 
 
 </head>
@@ -74,8 +57,7 @@ const emailData= await db.select(emailForm).from(users).where(isNotNull(users.em
     
 
 </body>
-<<<<<<< HEAD
+
+
 </html>
-=======
-</html>
->>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
+
