@@ -4,6 +4,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require(s)],
+  plugins: [require()],
 }
 
