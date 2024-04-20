@@ -4,7 +4,7 @@ import 'kleur/colors';
 import 'html-escaper';
 import 'clsx';
 import { createRemoteDatabaseClient, asDrizzleTable } from '@astrojs/db/runtime';
-import '@astrojs/db/dist/runtime/virtual.js';
+import { isNotNull } from '@astrojs/db/dist/runtime/virtual.js';
 
 const db = await createRemoteDatabaseClient(process.env.ASTRO_STUDIO_APP_TOKEN, {"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": undefined, "ASSETS_PREFIX": undefined}.ASTRO_STUDIO_REMOTE_DB_URL ?? "https://db.services.astro.build");
 const users = asDrizzleTable("users", { "columns": { "email": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "email", "collection": "users", "primaryKey": false, "optional": false } }, "password": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "password", "collection": "users", "primaryKey": false, "optional": false } } }, "deprecated": false, "indexes": {} }, false);
@@ -16,13 +16,9 @@ const $$Register = createComponent(async ($$result, $$props, $$slots) => {
   if (Astro2.request.method === "POST") {
     const formData = await Astro2.request.formData();
     const emailForm = formData.get("email");
-    const passwordForm = formData.get("password");
-    const findDetails = await db.select({
-      email: users.email
-    }).from(users);
-    if (emailForm === findDetails.email && passwordForm == findDetails.password) {
-      console.log("success login");
-    }
+    formData.get("password");
+    const emailData = await db.select(emailForm).from(users).where(isNotNull(users.email));
+    console.log(emailData);
   }
   return renderTemplate`<html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><link rel="stylesheet" href="/src/output.css">${renderHead()}</head> <body class="min-h-screen grid place-content-center radial-blue"> <form class="card w-96 bg-base-100 shadow-xl" method="POST"> <div class="card-body"> <h2 class="card-title mb-5">Sign Up!</h2> <label class="input input-bordered flex items-center gap-5 mb-3 " for="email">
 Email
