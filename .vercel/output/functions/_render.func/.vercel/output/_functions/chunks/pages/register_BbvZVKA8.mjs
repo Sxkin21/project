@@ -7,22 +7,21 @@ import { createRemoteDatabaseClient, asDrizzleTable } from '@astrojs/db/runtime'
 import '@astrojs/db/dist/runtime/virtual.js';
 
 const db = await createRemoteDatabaseClient(process.env.ASTRO_STUDIO_APP_TOKEN, {"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": undefined, "ASSETS_PREFIX": undefined}.ASTRO_STUDIO_REMOTE_DB_URL ?? "https://db.services.astro.build");
-const Users = asDrizzleTable("Users", { "columns": { "email": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "email", "collection": "Users", "primaryKey": false, "optional": false } }, "password": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "password", "collection": "Users", "primaryKey": false, "optional": false } } }, "deprecated": false, "indexes": {} }, false);
+const users = asDrizzleTable("users", { "columns": { "email": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "email", "collection": "users", "primaryKey": false, "optional": false } }, "password": { "type": "text", "schema": { "unique": false, "deprecated": false, "name": "password", "collection": "users", "primaryKey": false, "optional": false } } }, "deprecated": false, "indexes": {} }, false);
 
 const $$Astro = createAstro();
 const $$Register = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Register;
   if (Astro2.request.method === "POST") {
-    const data = await Astro2.request.formData();
-    const emailForm = data.get("email");
-    const passwordForm = data.get("password");
+    const formData = await Astro2.request.formData();
+    const emailForm = formData.get("email");
+    const passwordForm = formData.get("password");
     const findDetails = await db.select({
-      email: Users.email,
-      password: Users.password
-    }).from(Users);
-    if (emailForm === findDetails.email && passwordForm === findDetails.password) {
-      console.log("login successful");
+      email: users.email
+    }).from(users);
+    if (emailForm === findDetails.email && passwordForm == findDetails.password) {
+      console.log("success login");
     }
   }
   return renderTemplate`<html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><link rel="stylesheet" href="/src/output.css">${renderHead()}</head> <body class="min-h-screen grid place-content-center radial-blue"> <form class="card w-96 bg-base-100 shadow-xl" method="POST"> <div class="card-body"> <h2 class="card-title mb-5">Sign Up!</h2> <label class="input input-bordered flex items-center gap-5 mb-3 " for="email">
