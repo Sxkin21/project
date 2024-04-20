@@ -1,5 +1,9 @@
 import { renderers } from './renderers.mjs';
+<<<<<<< HEAD
 import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_Crr7E89J.mjs';
+=======
+import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_D4xE8BNb.mjs';
+>>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
 import { e as appendForwardSlash, j as joinPaths, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, g as removeTrailingForwardSlash, h as collapseDuplicateSlashes } from './chunks/astro/assets-service_BW51D1Kz.mjs';
 import { R as ROUTE_TYPE_HEADER, j as REROUTE_DIRECTIVE_HEADER, A as AstroError, k as ResponseSentError, l as MiddlewareNoDataOrNextCalled, n as MiddlewareNotAResponse, G as GetStaticPathsRequired, o as InvalidGetStaticPathsReturn, p as InvalidGetStaticPathsEntry, q as GetStaticPathsExpectedParams, t as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, N as NoMatchingStaticPathFound, u as PrerenderDynamicEndpointPathCollide, v as ReservedSlotName, w as renderSlotToString, x as renderJSX, y as chunkToString, z as isRenderInstruction, B as LocalsNotAnObject, C as clientLocalsSymbol, H as clientAddressSymbol$1, J as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, K as ASTRO_VERSION, O as responseSentSymbol$1, Q as AstroResponseHeadersReassigned, T as renderPage, V as renderEndpoint, W as REROUTABLE_STATUS_CODES } from './chunks/astro_DxX6mlks.mjs';
 import { serialize, parse } from 'cookie';
@@ -2104,7 +2108,11 @@ const createExports = (manifest, { middlewareSecret }) => {
 };
 
 const _page0 = () => import('./chunks/generic_CI0h8j6e.mjs');
+<<<<<<< HEAD
 const _page1 = () => import('./chunks/register_BxUQI40v.mjs');
+=======
+const _page1 = () => import('./chunks/register_D-SIW7Lw.mjs');
+>>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
 const pageMap = new Map([
     ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/register.astro", _page1]
@@ -2116,7 +2124,11 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
+<<<<<<< HEAD
     "middlewareSecret": "80856622-c7ed-46d1-adc4-da46ad497b14"
+=======
+    "middlewareSecret": "c7c12465-5b28-4878-8921-5c59837b39a9"
+>>>>>>> 0300e722a1287109d9083dd4060cb2e9fdbeb789
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;
