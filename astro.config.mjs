@@ -8,5 +8,5 @@ import db from "@astrojs/db";
 export default defineConfig({
   integrations: [tailwind(), db()],
   output: "server",
-  adapter: vercel()
+  adapter: netlify()
 });
