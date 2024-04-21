@@ -10,4 +10,8 @@ export default defineConfig({
   integrations: [tailwind(), db()],
   output: "server",
   adapter: netlify()
+
+  {
+    outDir: './src'
+  }
 });
