@@ -11,7 +11,7 @@ if (Astro.request.method === 'POST') {
   const passwordForm = formData.get('password');
 
 
-const emailData= await db.select().from(users).where(isNotNull(users.email))
+  const emailData= await db.select().from(users)
 
 
   

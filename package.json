@@ -4,9 +4,9 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "dev": "astro dev --remote",
+    "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build --remote",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
