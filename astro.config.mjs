@@ -9,9 +9,9 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [tailwind(), db()],
   output: "server",
-  adapter: netlify()
+  adapter: netlify(),
 
-  {
+  
     outDir: './src'
-  }
+  
 });
