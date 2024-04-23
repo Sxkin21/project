@@ -1,6 +1,7 @@
 ---
 
-import { db, users, isNotNull} from 'astro:db';
+
+import { db, users, inArray, } from 'astro:db';
 
 
 
@@ -10,14 +11,13 @@ if (Astro.request.method === 'POST') {
   const emailForm = formData.get('email');
   const passwordForm = formData.get('password');
 
-
-  const emailData= await db.select().from(users)
-
-
   
+const userData= await db.select().from(users)
+console.log(userData)
 
-    console.log(emailData)
-  
+
+
+
 }
 ---
 
