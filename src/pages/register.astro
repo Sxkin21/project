@@ -9,14 +9,20 @@ if (Astro.request.method === 'POST') {
   // parse form data
   const formData = await Astro.request.formData();
   const emailForm = formData.get('email');
-  const passwordForm = formData.get('password');
+ const passwordForm = formData.get('password');
 
   
 const userData= await db.select().from(users)
-console.log(userData)
 
 
+const jsonData= JSON.stringify(userData)
 
+const emailSuccess=jsonData.includes(emailForm)
+const passwordSuccess=jsonData.includes(passwordForm)
+
+if (emailSuccess && passwordSuccess) {
+
+}
 
 }
 ---
@@ -51,6 +57,10 @@ console.log(userData)
             <button  type="submit" class="btn btn-primary left-1/2 w-28 font-extrabold">Create Account</button>
           </div>
 
+        </div>
+
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Login</button>
         </div>
         </form>
 
