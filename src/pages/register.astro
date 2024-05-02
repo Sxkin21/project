@@ -24,6 +24,8 @@ if (emailSuccess && passwordSuccess) {
 
 }
 
+
+
 }
 ---
 
@@ -38,10 +40,10 @@ if (emailSuccess && passwordSuccess) {
 
 
 </head>
-<body class="min-h-screen grid place-content-center radial-blue">
-    <form class="card w-96 bg-base-100 shadow-xl" method="POST">
+<body class="radial-blue flex">
+    <form class="card w-96 bg-base-100 shadow-xl " method="POST">
         
-        <div class="card-body">
+        <div class="card-body justify-center align-middle">
           <h2 class="card-title mb-5">Sign Up!</h2>
 
           <label class="input input-bordered flex items-center gap-5 mb-3 " for="email">
@@ -54,21 +56,17 @@ if (emailSuccess && passwordSuccess) {
           </label>
 
           <div class="card-actions ">
-            <button  type="submit" class="btn btn-primary font-extrabold mr-[60px] mb-[30px]">Create Account</button>
+            <button  type="submit" class="btn btn-primary font-extrabold ">Create Account</button>
           </div>
           
-          <div class="card-actions  ">
-            <a href="" class="btn btn-active btn-link mr-[60px] mb-[30px]">Login</a>
-          </div>
+
           
         </div>
 
         </form>
         
 
-        <div id="Registered"class="chat chat-end static top-5 right-14 hidden">
-          <div class="chat-bubble chat-bubble-error">You are already registered</div>
-        </div>
+
     
 
 </body>

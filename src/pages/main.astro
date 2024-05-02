@@ -1,0 +1,43 @@
+---
+
+var auth2; // The Sign-In object.
+
+
+var initSigninV2 = function() {
+  auth2 = gapi.auth2.init({
+      client_id: '146200903155-4j8bbjin2rc9m40s2bap34v7r6cg9u3u.apps.googleusercontent.com',
+      scope: 'profile'
+  });
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="146200903155-4j8bbjin2rc9m40s2bap34v7r6cg9u3u.apps.googleusercontent.com">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/src/output.css">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="h-full w-full">
+    <div class="card w-96 bg-base-100 shadow-xl mx-auto m-auto bg-orange-500">
+        <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title mx-auto">Login with google</h2>
+           <div class="card-actions ">
+          </div>
+          <button class="g-signin mx-auto " data-onsuccess="onSignIn">Login</button>
+
+         
+        </div>
+      </div>
+
+      
+</body>
+</html>
