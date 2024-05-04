@@ -1,13 +1,12 @@
 ---
 
-var auth2; // The Sign-In object.
 
 
-var initSigninV2 = function() {
-  auth2 = gapi.auth2.init({
-      client_id: '146200903155-4j8bbjin2rc9m40s2bap34v7r6cg9u3u.apps.googleusercontent.com',
-      scope: 'profile'
-  });
+
+
+
+// ..
+
 
 ---
 
@@ -21,9 +20,10 @@ var initSigninV2 = function() {
 
     <link rel="stylesheet" href="/src/output.css">
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
 </head>
 <body class="h-full w-full">
     <div class="card w-96 bg-base-100 shadow-xl mx-auto m-auto bg-orange-500">
@@ -32,12 +32,43 @@ var initSigninV2 = function() {
           <h2 class="card-title mx-auto">Login with google</h2>
            <div class="card-actions ">
           </div>
-          <button class="g-signin mx-auto " data-onsuccess="onSignIn">Login</button>
+          
+          <button id="google" class="mx-auto">Sign in with Google</button>
+        </div>
+
+
 
          
         </div>
       </div>
 
-      
+      <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+
+      <script>
+          import { app } from "../firebase/server";
+          import {
+            getAuth,
+          GoogleAuthProvider,
+          signInWithPopup,
+        } from "firebase/auth";
+
+          const auth = getAuth(app);
+          
+          const googleSignin = document.querySelector("#google") as HTMLButtonElement;
+          googleSignin.addEventListener("click", async () => {
+          const provider = new GoogleAuthProvider();
+          const userCredential = await signInWithPopup(auth, provider);
+          const idToken = await userCredential.user.getIdToken();
+          const res = await fetch("/api/auth/signin", {
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          });
+
+          if (res.redirected) {
+            window.location.assign(res.url);
+          }
+        });
+      </script>
 </body>
 </html>

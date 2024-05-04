@@ -1,10 +1,14 @@
 {
-    "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "baseUrl": "C:/Users/moals/Downloads/project",
+    "paths": {
+      "@userForm/*": [
+        "src/pages/*"
+      ]
+    },
 
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@userForm/*": ["src/pages/*"],
-      }
-    }
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
+}
