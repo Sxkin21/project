@@ -1,11 +1,31 @@
 ---
 
+import { Client, Account, OAuthProvider } from "appwrite";
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('663523fd001d4a3fa9cc');                 // Your project ID
+
+const account = new Account(client);
 
 
+// Go to OAuth provider login page
 
 
+if (Astro.request.method === "POST") {
+            const redirectURL = account.createOAuth2Token(
+            OAuthProvider.Google, // provider
+            'http://localhost:4321/success', // success (optional)
+            'http://localhost:4321', // failure (optional)
+            [] // scopes (optional)
+        );
 
-// ..
+        
+            return Astro.redirect(redirectURL)
+
+
+}
+
 
 
 ---
@@ -24,51 +44,39 @@
 
     <meta name="referrer" content="no-referrer-when-downgrade">
 <meta name="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+
+
 </head>
 <body class="h-full w-full">
+  <form method="post">
     <div class="card w-96 bg-base-100 shadow-xl mx-auto m-auto bg-orange-500">
         <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Shoes" /></figure>
         <div class="card-body">
-          <h2 class="card-title mx-auto">Login with google</h2>
-           <div class="card-actions ">
+
+          <div class="card-actions ">
+            <button type="submit" class="mx-auto">Sign in with Google</button>
           </div>
           
-          <button id="google" class="mx-auto">Sign in with Google</button>
+            
+
+  
         </div>
 
 
 
          
-        </div>
-      </div>
+    </div>
 
+    </form>
       <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
 
-      <script>
-          import { app } from "../firebase/server";
-          import {
-            getAuth,
-          GoogleAuthProvider,
-          signInWithPopup,
-        } from "firebase/auth";
+      <script >
 
-          const auth = getAuth(app);
-          
-          const googleSignin = document.querySelector("#google") as HTMLButtonElement;
-          googleSignin.addEventListener("click", async () => {
-          const provider = new GoogleAuthProvider();
-          const userCredential = await signInWithPopup(auth, provider);
-          const idToken = await userCredential.user.getIdToken();
-          const res = await fetch("/api/auth/signin", {
-            headers: {
-              Authorization: `Bearer ${idToken}`,
-            },
-          });
+        if(document.URL.includes("http://localhost:4321/success")) {
+          console.log("hello")
+        }
 
-          if (res.redirected) {
-            window.location.assign(res.url);
-          }
-        });
+       
       </script>
 </body>
 </html>
