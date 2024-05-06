@@ -23,9 +23,9 @@ if (Astro.request.method === "POST") {
         
             return Astro.redirect(redirectURL)
 
+            
 
 }
-
 
 
 ---
@@ -43,7 +43,7 @@ if (Astro.request.method === "POST") {
   
 
     <meta name="referrer" content="no-referrer-when-downgrade">
-<meta name="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+  <meta name="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
 
 
 </head>
@@ -68,15 +68,28 @@ if (Astro.request.method === "POST") {
     </div>
 
     </form>
-      <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+      
 
-      <script >
+      <script>
+        
 
-        if(document.URL.includes("http://localhost:4321/success")) {
-          console.log("hello")
-        }
 
-       
-      </script>
+// Replace this with your actual URL
+
+
+  // Your JavaScript code here
+  console.log("Script started");
+  const currentURL = 'http://localhost:4321/success';
+  const parsedURL = new URL(currentURL);
+  const searchParams = new URLSearchParams(window.location.search);
+
+
+  if (parsedURL.href.includes("http://localhost:4321/success")) {
+    const userId=searchParams.get('userId')
+    const secret=searchParams.get('secret')
+
+  }
+
+</script>
 </body>
 </html>
