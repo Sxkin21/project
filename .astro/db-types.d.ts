@@ -4,4 +4,8 @@ declare module 'astro:db' {
 		"users",
 		{"email":{"type":"text","schema":{"unique":false,"deprecated":false,"name":"email","collection":"users","primaryKey":false,"optional":false}},"password":{"type":"text","schema":{"unique":false,"deprecated":false,"name":"password","collection":"users","primaryKey":false,"optional":false}}}
 	>;
+	export const courseData: import("@astrojs/db/runtime").Table<
+		"courseData",
+		{"courseId":{"type":"text","schema":{"unique":false,"deprecated":false,"name":"courseId","collection":"courseData","primaryKey":false,"optional":false}},"id":{"type":"text","schema":{"unique":false,"deprecated":false,"name":"id","collection":"courseData","primaryKey":false,"optional":false}}}
+	>;
 }

@@ -28,10 +28,13 @@
     "appwrite": "^14.0.1",
     "astro": "^4.6.1",
     "auth-astro": "^4.1.1",
+    "cookies": "^0.9.1",
     "firebase": "^10.11.1",
     "firebase-admin": "^12.1.0",
     "google-auth-library": "^9.9.0",
+    "js-cookie": "^3.0.5",
     "node-appwrite": "^12.0.1",
+    "nookies": "^2.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.3"

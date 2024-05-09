@@ -9,9 +9,16 @@ const users= defineTable({
   }
 })
 
+const courseData=defineTable({
+  columns: {
+    courseId: column.text(),
+    id: column.text()
+  }
+})
+
 
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: {users}
+  tables: {users, courseData}
 });

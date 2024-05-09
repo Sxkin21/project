@@ -13,16 +13,17 @@ const account = new Account(client);
 
 
 if (Astro.request.method === "POST") {
-            const redirectURL = account.createOAuth2Token(
+            const redirectURL = account.createOAuth2Session(
             OAuthProvider.Google, // provider
-            'http://localhost:4321/success', // success (optional)
-            'http://localhost:4321', // failure (optional)
-            [] // scopes (optional)
+            'http://localhost:4321/loading', // success (optional)
+            'http://localhost:4321/main', // failure (optional)
+            ['https://www.googleapis.com/auth/classroom.courses.readonly'] // scopes (optional)
         );
 
         
             return Astro.redirect(redirectURL)
-
+        
+            
             
 
 }
@@ -70,26 +71,7 @@ if (Astro.request.method === "POST") {
     </form>
       
 
-      <script>
-        
 
-
-// Replace this with your actual URL
-
-
-  // Your JavaScript code here
-  console.log("Script started");
-  const currentURL = 'http://localhost:4321/success';
-  const parsedURL = new URL(currentURL);
-  const searchParams = new URLSearchParams(window.location.search);
-
-
-  if (parsedURL.href.includes("http://localhost:4321/success")) {
-    const userId=searchParams.get('userId')
-    const secret=searchParams.get('secret')
-
-  }
-
-</script>
 </body>
+
 </html>
