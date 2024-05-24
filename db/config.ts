@@ -11,7 +11,7 @@ const users= defineTable({
 
 const courseData=defineTable({
   columns: {
-    courseId: column.text(),
+    name: column.text(),
     id: column.text()
   }
 })

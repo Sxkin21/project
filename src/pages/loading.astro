@@ -1,7 +1,7 @@
 ---
+import {db, courseData} from 'astro:db'
 
-
-
+import ProgressBar  from "../components/ProgressBar.tsx"
 
 ---
 
@@ -12,68 +12,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/src/output.css">
-    <script>
-
-        
-
-        import { Client, Account, OAuthProvider } from "appwrite";
 
 
-
-
-        
-
-          const client = new Client()
-              .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-              .setProject('663523fd001d4a3fa9cc');                 // Your project ID
   
-          const account = new Account(client);
-      
+    <script src="../jsFiles/loading.js">
+         
+      // Read the message from the data attribute.
+           
+
+            
+            
+   
   
-      const searchParams = new URLSearchParams(window.location.search);
-      const getSessions=await account.getSession('current')
-
-
-
-      if (getSessions.current===true && window.location.href.includes("loading")){
-
-       const access_token=getSessions.providerAccessToken
        
-       const url="https://classroom.googleapis.com/v1/courses?access_token=".concat(access_token)
-       
-       fetch(url)
-            .then((response) => {
-                return response.json()
-    })
-            .then((data) => {
-                for (let x in data.courses){
-                 
-                    fetch("idData.json", {
-                        method: "POST",
-
-                        body: JSON.stringify({
-                            id: data.courses[x].id
-                        }),
-
-                        headers:{
-                            "Content-type": "application/json; charset=UTF-8"
-                        }
-                    })
-
-                    .then(response=>console.log(response.json()))
-                    .then(idData=>console.log(idData))
-                }
-                
-            })
-    
-
-
-}
-
     </script>
 </head>
 <body>
-    <span class="loading loading-dots loading-lg mx-auto"></span>
 
+  <div class="flex items-center h-screen w-screen ">
+    <ProgressBar/>
+  </div>
+      
+
+
+  
+  
 </body>
 </html>

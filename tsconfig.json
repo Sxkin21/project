@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": "C:/Users/moals/Downloads/project",
     "paths": {
@@ -7,9 +7,6 @@
         "src/pages/*"
       ]
     },
-
-
-
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   }
