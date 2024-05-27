@@ -6,7 +6,7 @@ import { Client, Account} from "appwrite";
 import cookieParser from "cookie-parser"
 
 
-import{setIdExistsInDB} from './src/exportVariables/variableHolder.js'
+import{idExistsInDB} from './src/exportVariables/variableHolder.js'
 
 const app= express()
 app.use(cors())
@@ -96,7 +96,9 @@ app.post('/idVariableSaver', (req, res, ) => {
                                     var stringCookies=JSON.stringify(cookieClasses)
                                     
                                     res.cookie("Classes", stringCookies)
-                                    setIdExistsInDB("SavedCookies")
+
+                                    console.log(stringCookies)
+                                    var idExistsInDB="SavedCookies"
                                     res.send("")
                                 }
                         })
@@ -115,3 +117,7 @@ app.post('/idVariableSaver', (req, res, ) => {
     
    
 )
+
+app.post("/dataLoadingBar", (req,res) => {
+    
+})

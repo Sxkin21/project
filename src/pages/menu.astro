@@ -1,3 +1,14 @@
+---
+import axios from 'axios'
+import{idExistsInDB} from '../exportVariables/variableHolder.js'
+import {db,courseData} from 'astro:db'
+if (idExistsInDB==="menuPostDataSend"){
+  var dbDataSend=await db.select().from(courseData)
+  axios.post("http://localhost:3000/dataLoadingBar", )
+  
+}
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

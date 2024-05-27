@@ -1,7 +1,41 @@
 ---
 import {db, courseData} from 'astro:db'
+import{idExistsInDB} from '../exportVariables/variableHolder.js'
 
-import ProgressBar  from "../components/ProgressBar.tsx"
+import ProgressBar  from "../components/ProgressBar.jsx"
+
+const CookieClassesBoolean=Astro.cookies.has("Classes")
+const cookies= Astro.cookies.get("Classes")?.json()
+
+if (CookieClassesBoolean || idExistsInDB==="SavedCookies" ){
+  var idExistsInDB=null
+  for(let x in cookies){
+    var EachCookie=JSON.parse(cookies[x].slice(13))
+    var cookieClassId= EachCookie.classDetails.id
+    var cookieClassName=EachCookie.classDetails.className
+    var selectDataBase=await db.select().from(courseData)
+    var courseDataArray=JSON.stringify(selectDataBase)
+    var check = (courseDataArray.includes(cookieClassId)===false && courseDataArray.includes(cookieClassName)===false)?await db.insert(courseData).values({id: cookieClassId, name: cookieClassName}):(courseDataArray.includes(cookieClassId) && courseDataArray.includes(cookieClassName))?idExistsInDB="true":console.log(courseDataArray);
+    var parsedX=parseInt(x,10)
+    
+    
+    x=null
+    for(x in selectDataBase){
+      x!=null
+      
+    
+      if(parsedX===0){
+        var {undefined, name, id}=selectDataBase[x]
+        console.log(name)
+        var checkDatabase=(selectDataBase[x].name===name)?idExistsInDB="true":console.log("false")
+        console.log(idExistsInDB)
+      }
+    }
+    idExistsInDB="true"
+
+   
+  }
+}
 
 ---
 
@@ -29,7 +63,7 @@ import ProgressBar  from "../components/ProgressBar.tsx"
 </head>
 <body>
 
-  <div class="flex items-center h-screen w-screen ">
+  <div class="flex justify-center items-center h-screen w-screen ">
     <ProgressBar/>
   </div>
       

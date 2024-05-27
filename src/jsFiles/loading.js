@@ -4,7 +4,7 @@
         import axios from 'axios';
         
         import moment from 'moment';
-        import{setIdExistsInDB} from '../exportVariables/variableHolder.js'
+        import{idExistsInDB} from '../exportVariables/variableHolder.js'
        
           
           const client = new Client()
@@ -42,12 +42,12 @@
                     
                     var classData=JSON.stringify({classDetails:{id:data.courses[x].id, className:data.courses[x].name}})
                     
-                    setIdExistsInDB("false")
+                    var idExistsInDB="false"
                     
                     
                     
                     
-                    if (setIdExistsInDB()==="false"){
+                    if (idExistsInDB==="false"){
                         
 
                         axios.post("http://localhost:3000/classes", classData, {

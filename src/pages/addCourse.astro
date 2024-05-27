@@ -1,6 +1,7 @@
 ---
 import { db, courseData } from 'astro:db';
 
+
 ---
 
 <!DOCTYPE html>
@@ -19,6 +20,17 @@ import { db, courseData } from 'astro:db';
 </head>
 <body >
 
-    
+    <div class="flex  justify-center items-center h-screen w-screen">
+        
+        <ul class="py-7 px-6 border-[8px] rounded-xl border-solid h-[600px] w-[400px] border-black bg-slate-300" >
+            
+
+            <li class="bg-  h-[70px] rounded-[25px] relative flex items-center drop-shadow-lg">
+                <button class="toggle-button absolute right-10 mr-[-19px] rounded-3xl h-11 w-20  bg-white overflow-hidden">
+                    <img src="/src/images/toggle.svg" class="w-full h-full object-cover">
+                </button>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
